@@ -15,3 +15,17 @@ def EQUIJOINS(request):
     Equijoins=emp.objects.select_related('deptno').filter(comm__isnull=True)
     d={'Equijoins':Equijoins}
     return render(request,'EQUIJOINS.html',d)
+
+
+
+def selfjoins(request):
+    EmpObjects=emp.objects.select_related('mgr').all()
+    EmpObjects=emp.objects.select_related('mgr').filter(mgr__ename='KING')
+    EmpObjects=emp.objects.select_related('mgr').filter(sal__gte=2500)
+    EmpObjects=emp.objects.select_related('mgr').filter(sal__gte=2500,mgr__ename='KING')
+    EmpObjects=emp.objects.select_related('mgr').all()
+    EmpObjects=emp.objects.select_related('mgr').filter(mgr__ename__isnull=True)
+    
+
+    d={'EmpObjects':EmpObjects}
+    return render(request,'selfjoins.html',d)

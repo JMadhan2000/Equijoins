@@ -21,4 +21,5 @@ from app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('EQUIJOINS/',EQUIJOINS,name='EQUIJOINS'),
+    path('selfjoins/',selfjoins,name='selfjoins'),
 ]
